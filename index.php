@@ -30,11 +30,16 @@
       'purchaseUrl' => 'http://example.com'
     ],
   ];
+
+  function filterByAuthor()
+  {
+    return 'gibberish';
+  }
   ?>
   <h1>Recommended Books</h1>
   <ul>
     <?php foreach ($books as $book) : ?>
-      <?php if ($book['Author'] == 'Andy Weir') : ?>
+      <?php if ($book['Author'] === 'Andy Weir') : ?>
         <li>
           <a href="<?= $book['purchaseUrl'] ?>">
             <?= $book['name'] ?> (<?= $book['releaseYear'] ?>)
@@ -43,6 +48,10 @@
       <?php endif; ?>
     <?php endforeach; ?>
   </ul>
+
+  <p>
+    <?= filterByAuthor() ?>
+  </p>
 
 </body>
 
