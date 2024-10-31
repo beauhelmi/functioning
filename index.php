@@ -13,45 +13,48 @@
   $books = [
     [
       'name' => 'Do Androids Dream of Electric Sheep',
-      'Author' => 'Philips K. Dick',
+      'author' => 'Philips K. Dick',
       'releaseYear' => 1968,
       'purchaseUrl' => 'http://example.com'
     ],
     [
       'name' => 'Project Hail Mary',
-      'Author' => 'Andy Weir',
+      'author' => 'Andy Weir',
       'releaseYear' => 2021,
       'purchaseUrl' => 'http://example.com'
     ],
     [
       'name' => 'The Martian',
-      'Author' => 'Andy Weir',
+      'author' => 'Andy Weir',
       'releaseYear' => 2011,
       'purchaseUrl' => 'http://example.com'
     ],
   ];
 
-  function filterByAuthor()
-  {
-    return 'gibberish';
+  function filterByAuthor($books) {
+
+    $filteredBooks = [];
+
+    foreach ($books as $book) {
+      if ($book['author'] === 'Andy Weir') {
+        $filteredBooks[] = $book;
+      }
+    }
+    return $filteredBooks;
   }
   ?>
   <h1>Recommended Books</h1>
   <ul>
-    <?php foreach ($books as $book) : ?>
-      <?php if ($book['Author'] === 'Andy Weir') : ?>
+    <?php foreach (filterByAuthor($books) as $book) : ?>
+ 
         <li>
           <a href="<?= $book['purchaseUrl'] ?>">
             <?= $book['name'] ?> (<?= $book['releaseYear'] ?>)
           </a>
         </li>
-      <?php endif; ?>
+     
     <?php endforeach; ?>
   </ul>
-
-  <p>
-    <?= filterByAuthor() ?>
-  </p>
 
 </body>
 
